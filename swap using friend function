@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+class B;
+class A
+{
+   private:
+       int x;
+   public:
+       void setdata(int a)
+       {
+          x=a;
+          }
+       void showdata()
+       {
+          cout<<"x="<<x;
+       }
+   friend void swap(A &s1, B &s2);
+};
+
+class B
+{
+   private:
+       int y;
+   public:
+       void setdata(int b)
+       {
+          y=b;
+        }
+       void showdata()
+       {
+          cout<<"y="<<y;
+       }
+    friend void swap(A &s1,B &s2);
+};
+void swap(A &s1,B &s2)
+   {
+      int temp;
+      temp=s1.x;
+      s1.x=s2.y;
+      s2.y=temp;
+   }
+int main()
+{
+    A obj1;
+    B obj2;
+    int x1,x2;
+
+    cout<<"\nInput a class Numbers:";
+    cin>>x1;
+    cout<<"\nInput b class Numbers:";
+    cin>>x2;
+    obj1.setdata(x1);
+    obj2.setdata(x2);
+    swap(obj1,obj2);
+
+    cout<<"\nAfter Swapping class A data\n";
+    obj1.showdata();
+   cout<<"\nAfter Swapping class B data\n";
+    obj2.showdata();
+ return 0;
+}
